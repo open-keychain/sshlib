@@ -4,7 +4,13 @@ plugins {
 }
 
 apply plugin: 'java'
-apply from: "${rootDir}/publish.gradle"
+
+if (new File("${rootDir}/publish.gradle").exists()) {
+    logger.info("${rootDir}/publish.gradle found")
+    apply from: "${rootDir}/publish.gradle"
+} else {
+    logger.warn("publish.gradle not found")
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
