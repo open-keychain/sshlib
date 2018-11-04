@@ -12,6 +12,8 @@ if (new File("${rootDir}/publish.gradle").exists()) {
     logger.warn("publish.gradle not found")
 }
 
+apply from: "${rootDir}/config/quality.gradle"
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.jcraft:jzlib:1.1.3'
